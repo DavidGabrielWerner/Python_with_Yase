@@ -82,18 +82,23 @@ while True:
     pygame.draw.line(screen, (0, 0, 0), (290, 100), (290, 400), 2)
     pygame.draw.line(screen, (0, 0, 0), (100, 210), (400, 210), 2)
     pygame.draw.line(screen, (0, 0, 0), (100, 290), (400, 290), 2)
-    for i in gameboard:
-        for j in i:
+    
+    x_start = 135
+    y_start = 135
+    size = 80 
+    
+    for y_cord, i in enumerate(gameboard):
+        for x_cord, j in enumerate(i):
             match j:
                 case "X":
-                    print(x, y)
-                    pygame.draw.line(screen, (0, 0, 0), (215, 215), (215 + 70, 215 + 70), 2)
-                    pygame.draw.line(screen, (0, 0, 0), (215 + 70, 215), (215, 215 + 70), 2)
+                    print(x_cord, y_cord)
+                    pygame.draw.line(screen, (0, 0, 0), (x_start + size * x_cord, y_start + size * y_cord), (x_start + size * x_cord + 70, y_start + size * y_cord + 70), 2)
+                    pygame.draw.line(screen, (0, 0, 0), (x_start + size * x_cord + 70, y_start + size * y_cord), (x_start + size * x_cord, y_start + size * y_cord + 70), 2)
                 case "O":
                     print(x, y)
                     pygame.draw.arc(screen, "black", [210, 75, 150, 125], pi, 3 * pi / 2, 2)
                 case _:
-                    print("WTF")
+                    continue
 
 
     pygame.gfxdraw.box(screen, (player_x, player_y, player_width, player_height), (255,193,193,50))
