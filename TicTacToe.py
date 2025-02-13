@@ -18,7 +18,7 @@ pygame.display.set_caption("Tiky Taky")
 clock = pygame.time.Clock()
 
 #Virtuelles Spielfeld
-gameboard = [["1","",""], ["2","",""],["3","",""]]
+gameboard = [["","",""], ["","",""],["","",""]]
 print(gameboard)
 
 #Player
@@ -63,13 +63,15 @@ while True:
         print(player_x, player_y, "y:" + str(y))
     if keys[pygame.K_SPACE]:
         if count%2 == 0:
-            gameboard[y][x] = "X"
-            time.sleep(0.1)
-            count += 1
+            if gameboard[y][x] == "":
+                gameboard[y][x] = "X"
+                time.sleep(0.1)
+                count += 1
         else:
-            gameboard[y][x] = "O"
-            time.sleep(0.1)
-            count += 1
+            if gameboard[y][x] == "":
+                gameboard[y][x] = "O"
+                time.sleep(0.1)
+                count += 1
 
 
 
@@ -96,7 +98,7 @@ while True:
                     pygame.draw.line(screen, (0, 0, 0), (x_start + size * x_cord + 70, y_start + size * y_cord), (x_start + size * x_cord, y_start + size * y_cord + 70), 2)
                 case "O":
                     print(x, y)
-                    pygame.draw.arc(screen, "black", [210, 75, 150, 125], pi, 3 * pi / 2, 2)
+                    pygame.draw.circle(screen, "black", (x_start + size * x_cord + 37.5, y_start + size * y_cord + 37.5), 30)
                 case _:
                     continue
 
