@@ -108,5 +108,4 @@ while True:
         pygame.draw.rect(screen, (0, 0, 0), (player_x - i, player_y - i, player_width, player_height), 1)
 
     pygame.display.flip()
-    print(counter)
     print(gameboard)
